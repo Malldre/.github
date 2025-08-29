@@ -1,31 +1,31 @@
-# Malldre -  Warehouse Management System (WMS)
+# Malldre - SaaS de Gestão Logística
 
-![Malldre Logo](link_para_logo_opcional)
-
-Malldre é um **sistema de gerenciamento de armazéns acadêmico** (WMS), desenvolvido como projeto interdisciplinar, com foco em armazenagem de produtos, controle de prateleiras, racks, cargas e transações operacionais. O sistema foi projetado para ser **modular, extensível e cloud-ready**, utilizando **serverless architecture** na AWS e **TypeScript** para APIs e funções Lambda.
+Malldre é um **SaaS completo de gestão logística**, originalmente desenvolvido como um **WMS acadêmico**, que evoluiu para oferecer funcionalidades avançadas de **controle de armazéns, estoques e operações logísticas**. O sistema é modular, extensível e cloud-ready, utilizando **serverless architecture** na AWS.
 
 ---
 
 ## 🔹 Funcionalidades Principais
 
-* **Controle de Usuários**
+* **Controle de Usuários e Multiempresa (SaaS)**
 
   * Autenticação via **Cognito**
-  * Perfis e permissões de acesso
-* **Gerenciamento de Estoque**
+  * Perfis e permissões de acesso por empresa
+* **Gestão de Estoque e Armazenagem**
 
   * Produtos, fornecedores e grupos de produtos
   * Controle de cargas e pacotes
-  * Prateleiras, racks e tipos de prateleiras
+  * Prateleiras, racks e tipos de prateleiras (herdado do WMS acadêmico)
   * Organização 3D de armazéns (Zonas, Colunas, Fileiras)
 * **Transações Operacionais**
 
   * Entrada e saída de cargas
   * Movimentação entre prateleiras e racks
-* **Fluxo Operacional**
+* **Recursos SaaS Avançados**
 
-  * Registro completo de operações de armazenagem
-  * Controle de empilhamento e capacidade de locações
+  * Dashboards e relatórios de BI
+  * Integrações com ERPs e marketplaces
+  * Suporte a múltiplos armazéns e clientes
+  * APIs abertas para integração externa
 * **Cloud & Serverless**
 
   * API baseada em **AWS Lambda**
@@ -39,44 +39,25 @@ Malldre é um **sistema de gerenciamento de armazéns acadêmico** (WMS), desenv
 
 * **Backend/API**
 
-  * **Node.js 20.19**
+  * **Node.js 22.xx**
   * **TypeScript**
   * **Express.js**
   * **Prisma ORM** para PostgreSQL
 * **Banco de Dados**
 
   * PostgreSQL (hosted, ex: Railway ou AWS RDS)
-  * Modelos: Usuário, Produto, Carga, Prateleira, Rack, Transação
+  * Modelos: Usuário, Empresa, Produto, Carga, Prateleira, Rack, Transação
 * **Infraestrutura**
 
   * **Serverless**: AWS Lambda, API Gateway, S3, Cognito
   * IaC com Terraform
-* **Autenticação**
+* **Autenticação e Multitenancy**
 
   * JWT via **Cognito Authorizer**
   * Tokens armazenados em cookies para sessões persistentes
+  * Isolamento de dados por empresa/cliente
 
 ---
-
-## 🔹 Estrutura do Projeto
-
-```
-malldre/
-├── lambda-functions/        # Funções Lambda serverless
-├── prisma/                  # Models e migrations do Prisma
-├── src/
-│   ├── controllers/         # Lógica de endpoints
-│   ├── services/            # Regras de negócio
-│   ├── routes/              # Rotas da API
-│   └── validators/          # Validações de requisições
-├── terraform/               # Scripts de IaC
-├── tests/                   # Testes unitários e de integração
-├── package.json
-└── README.md
-```
-
----
-
 ## 🔹 Tecnologias
 
 * **Linguagens**: TypeScript, SQL
@@ -87,55 +68,6 @@ malldre/
 * **Infraestrutura**: Terraform
 * **CI/CD**: GitHub Actions
 * **Testes**: Vitest
-
----
-
-## 🔹 Instalação e Uso
-
-1. **Clone o repositório**
-
-```bash
-git clone https://github.com/usuario/malldre.git
-cd malldre
-```
-
-2. **Instale dependências**
-
-```bash
-npm install
-```
-
-3. **Configure variáveis de ambiente**
-
-```env
-DATABASE_URL=postgresql://usuario:senha@host:port/banco
-COGNITO_CLIENT_ID=xxx
-COGNITO_CLIENT_SECRET=xxx
-COGNITO_ISSUER_URL=xxx
-```
-
-4. **Migrate e seed do banco**
-
-```bash
-npx prisma migrate dev
-npx prisma db seed
-```
-
-5. **Rodar localmente**
-
-```bash
-npm run dev
-```
-
----
-
-## 🔹 Testes
-
-```bash
-npm run test
-```
-
-Utiliza **Vitest** para testes unitários e de integração.
 
 ---
 
@@ -157,7 +89,3 @@ Utiliza **Vitest** para testes unitários e de integração.
 * [Vitest](https://vitest.dev/)
 
 ---
-
-## 🔹 Licença
-
-MIT License © 2025 Adriano Vitoriano da Silva
